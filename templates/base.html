@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoTracker</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1/css/pico.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="container">
+        <hgroup>
+            <h1>&#9650; CryptoTracker</h1>
+            <h2>Cryptocurrency investment tracker</h2>
+        </hgroup>
+        <nav>
+            <ul>
+                {% if session.user_id %}
+                <li>
+                    <a href="{{ url_for('index') }}"
+                       {% if active == 'index' %}class="active"{% endif %}>
+                        Movements
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('purchase') }}"
+                       {% if active == 'purchase' %}class="active"{% endif %}>
+                        Buy / Trade
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('status') }}"
+                       {% if active == 'status' %}class="active"{% endif %}>
+                        Portfolio
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+            {% if session.user_id %}
+            <ul>
+                <li><span class="nav-username">{{ session.username }}</span></li>
+                <li><a href="{{ url_for('logout') }}" class="nav-logout">Logout</a></li>
+            </ul>
+            {% endif %}
+        </nav>
+    </header>
+
+    <main class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <p class="flash-{{ category }}">{{ message }}</p>
+            {% endfor %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="container">
+        <small>CryptoTracker &mdash; Flask project</small>
+    </footer>
+</body>
+</html>

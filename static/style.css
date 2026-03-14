@@ -1,0 +1,419 @@
+/* ── Override pico.css variables ── */
+:root {
+    --primary: #00d4aa;
+    --primary-hover: #00b894;
+    --primary-focus: rgba(0, 212, 170, 0.25);
+    --primary-inverse: #000;
+
+    --background-color: #0d1117;
+    --card-background-color: #161b22;
+    --card-border-color: #21262d;
+    --color: #e6edf3;
+    --muted-color: #7d8590;
+    --muted-border-color: #21262d;
+
+    --nav-link-color: #e6edf3;
+    --nav-link-hover-color: #00d4aa;
+
+    --form-element-background-color: #0d1117;
+    --form-element-border-color: #30363d;
+    --form-element-color: #e6edf3;
+    --form-element-focus-color: #00d4aa;
+    --form-element-placeholder-color: #7d8590;
+
+    --table-border-color: #21262d;
+    --table-row-stripped-background-color: rgba(255,255,255,0.03);
+
+    --font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* ── Layout ── */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main.container {
+    flex: 1;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* ── Header ── */
+header.container {
+    border-bottom: 1px solid var(--muted-border-color);
+    padding-top: 1.2rem;
+    padding-bottom: 0.5rem;
+}
+
+header hgroup h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0;
+    letter-spacing: -0.5px;
+}
+
+header hgroup h2 {
+    font-size: 0.85rem;
+    color: var(--muted-color);
+    margin-top: 0.1rem;
+    font-weight: 400;
+}
+
+/* ── Nav ── */
+header nav ul {
+    margin: 0.8rem 0 0;
+    padding: 0;
+    display: flex;
+    gap: 0.25rem;
+    list-style: none;
+}
+
+header nav ul li a {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--muted-color);
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+}
+
+header nav ul li a:hover {
+    background: rgba(255,255,255,0.06);
+    color: var(--color);
+}
+
+header nav ul li a.active {
+    background: rgba(0, 212, 170, 0.12);
+    color: var(--primary);
+    pointer-events: none;
+    cursor: default;
+}
+
+/* ── Footer ── */
+footer.container {
+    border-top: 1px solid var(--muted-border-color);
+    padding: 1rem 0;
+    text-align: center;
+    color: var(--muted-color);
+    font-size: 0.8rem;
+}
+
+/* ── Page headings ── */
+main h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--color);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--muted-border-color);
+}
+
+main h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--muted-color);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ── Flash messages ── */
+.flash-success {
+    background: rgba(0, 212, 170, 0.1);
+    border: 1px solid rgba(0, 212, 170, 0.3);
+    color: #00d4aa;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+}
+
+.flash-error {
+    background: rgba(248, 81, 73, 0.1);
+    border: 1px solid rgba(248, 81, 73, 0.3);
+    color: #f85149;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+}
+
+/* ── Tables ── */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+thead tr {
+    border-bottom: 2px solid var(--muted-border-color);
+}
+
+thead th {
+    color: var(--muted-color);
+    font-weight: 600;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.6rem 0.75rem;
+    text-align: left;
+}
+
+tbody td {
+    padding: 0.65rem 0.75rem;
+    border-bottom: 1px solid var(--muted-border-color);
+    color: var(--color);
+    vertical-align: middle;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:hover td {
+    background: rgba(255,255,255,0.03);
+}
+
+/* ── Movement type badges ── */
+.badge {
+    display: inline-block;
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.badge-buy {
+    background: rgba(0, 212, 170, 0.15);
+    color: #00d4aa;
+}
+
+.badge-sell {
+    background: rgba(248, 81, 73, 0.15);
+    color: #f85149;
+}
+
+.badge-trade {
+    background: rgba(88, 166, 255, 0.15);
+    color: #58a6ff;
+}
+
+/* ── Empty state ── */
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--muted-color);
+    font-size: 1rem;
+}
+
+/* ── Purchase form ── */
+.form-card {
+    background: var(--card-background-color);
+    border: 1px solid var(--card-border-color);
+    border-radius: 12px;
+    padding: 1.75rem;
+    max-width: 680px;
+}
+
+.form-card label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--muted-color);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ── Purchase form layout ── */
+.purchase-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.purchase-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.q-row {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.q-row input {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.calc-btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 1.1rem;
+    margin: 0;
+    width: auto;
+    flex-shrink: 0;
+}
+
+.readonly-field {
+    background: rgba(255,255,255,0.03) !important;
+    color: var(--muted-color) !important;
+    cursor: default;
+}
+
+.confirm-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.75rem;
+}
+
+.confirm-row button {
+    width: auto;
+    padding: 0.5rem 1.5rem;
+}
+
+/* ── P.U. column ── */
+td.pu {
+    color: var(--muted-color);
+    font-size: 0.85rem;
+}
+
+.result-box {
+    background: rgba(0, 212, 170, 0.08);
+    border: 1px solid rgba(0, 212, 170, 0.25);
+    border-radius: 8px;
+    padding: 0.9rem 1.2rem;
+    margin: 1rem 0;
+    font-size: 1rem;
+    color: var(--color);
+}
+
+.result-box span {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+/* ── Status cards ── */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: var(--card-background-color);
+    border: 1px solid var(--card-border-color);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+}
+
+.stat-card .stat-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted-color);
+    margin-bottom: 0.4rem;
+}
+
+.stat-card .stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color);
+}
+
+.stat-card.highlight {
+    border-color: rgba(0, 212, 170, 0.3);
+    background: rgba(0, 212, 170, 0.05);
+}
+
+.stat-card.highlight .stat-value {
+    color: var(--primary);
+}
+
+.gain-positive {
+    color: #00d4aa !important;
+}
+
+.gain-negative {
+    color: #f85149 !important;
+}
+
+/* ── Buttons ── */
+button[type="submit"] {
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* ── Nav username & logout ── */
+.nav-username {
+    font-size: 0.85rem;
+    color: var(--muted-color);
+    padding: 0.4rem 0.75rem;
+}
+
+a.nav-logout {
+    font-size: 0.85rem;
+    color: var(--muted-color);
+    padding: 0.4rem 0.75rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+}
+
+a.nav-logout:hover {
+    background: rgba(248, 81, 73, 0.1);
+    color: #f85149;
+}
+
+/* ── Auth pages ── */
+.auth-card {
+    max-width: 400px;
+    margin: 4rem auto;
+    background: var(--card-background-color);
+    border: 1px solid var(--card-border-color);
+    border-radius: 14px;
+    padding: 2.5rem 2rem;
+}
+
+.auth-logo {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.auth-card h2 {
+    text-align: center;
+    border-bottom: none;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: var(--muted-color);
+    font-weight: 500;
+}
+
+.auth-card button[type="submit"] {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.auth-switch {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--muted-color);
+    margin-top: 1.25rem;
+    margin-bottom: 0;
+}
+
+.auth-switch a {
+    color: var(--primary);
+}

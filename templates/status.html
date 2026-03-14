@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Portfolio Status</h2>
+
+{% if error_api %}
+<p class="flash-error">API error: {{ error_api }}</p>
+{% endif %}
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-label">Invested</div>
+        <div class="stat-value">{{ "%.2f"|format(invertido) }} €</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">Recovered</div>
+        <div class="stat-value">{{ "%.2f"|format(recuperado) }} €</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">At risk</div>
+        <div class="stat-value">{{ "%.2f"|format(valor_compra) }} €</div>
+    </div>
+    <div class="stat-card highlight">
+        <div class="stat-label">Current value</div>
+        <div class="stat-value">{{ "%.2f"|format(valor_actual) }} €</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">Gain / Loss</div>
+        <div class="stat-value {{ 'gain-positive' if ganancia >= 0 else 'gain-negative' }}">
+            {{ "+" if ganancia >= 0 }}{{ "%.2f"|format(ganancia) }} €
+        </div>
+    </div>
+</div>
+
+{% if saldos_eur %}
+<h3>Holdings breakdown</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Crypto</th>
+            <th>Amount</th>
+            <th>Value (EUR)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cripto, info in saldos_eur.items() %}
+        <tr>
+            <td><strong>{{ cripto }}</strong></td>
+            <td>{{ "%.6f"|format(info.cantidad) }}</td>
+            <td>{{ "%.2f"|format(info.valor_eur) }} €</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% endblock %}

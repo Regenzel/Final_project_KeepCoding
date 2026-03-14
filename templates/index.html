@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Movements</h2>
+
+{% if movimientos %}
+<table>
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Type</th>
+            <th>From</th>
+            <th>Q</th>
+            <th>To</th>
+            <th>Q</th>
+            <th>P.U.</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for m in movimientos %}
+        {% if m.moneda_from == 'EUR' %}
+            {% set tipo = 'BUY' %}
+            {% set badge_class = 'badge-buy' %}
+        {% elif m.moneda_to == 'EUR' %}
+            {% set tipo = 'SELL' %}
+            {% set badge_class = 'badge-sell' %}
+        {% else %}
+            {% set tipo = 'TRADE' %}
+            {% set badge_class = 'badge-trade' %}
+        {% endif %}
+        <tr>
+            <td>{{ m.date }}</td>
+            <td>{{ m.time }}</td>
+            <td><span class="badge {{ badge_class }}">{{ tipo }}</span></td>
+            <td>{{ m.moneda_from }}</td>
+            <td>{{ "%.6f"|format(m.cantidad_from) }}</td>
+            <td>{{ m.moneda_to }}</td>
+            <td>{{ "%.6f"|format(m.cantidad_to) }}</td>
+            <td class="pu">{{ "%.6f"|format(m.cantidad_from / m.cantidad_to) }} {{ m.moneda_from }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p class="empty-state">No movements yet.</p>
+{% endif %}
+{% endblock %}

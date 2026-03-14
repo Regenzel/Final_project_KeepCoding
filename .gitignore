@@ -1,0 +1,7 @@
+venv/
+__pycache__/
+*.pyc
+movimientos.db
+ROADMAP.md
+pdf_images/
+.claude/

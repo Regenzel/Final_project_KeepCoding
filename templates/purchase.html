@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Buy / Sell / Trade</h2>
+
+<div class="form-card">
+    <form method="POST" action="{{ url_for('purchase') }}">
+
+        <div class="purchase-grid">
+            <!-- Left column -->
+            <div class="purchase-col">
+                <label>
+                    From
+                    <select name="moneda_from" required>
+                        {% for m in monedas %}
+                        <option value="{{ m }}"
+                            {% if form_data.get('moneda_from') == m %}selected{% endif %}>
+                            {{ m }}{% if m != 'EUR' and balances[m] > 0 %} ({{ "%.4f"|format(balances[m]) }}){% endif %}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </label>
+
+                <label>
+                    Q
+                    <div class="q-row">
+                        <input type="number" name="cantidad_from" step="any" min="0.000001"
+                               value="{{ form_data.get('cantidad_from', '') }}"
+                               placeholder="0.00" required>
+                        <button type="submit" name="action" value="calcular"
+                                class="calc-btn secondary" title="Calculate">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="4" y="2" width="16" height="20" rx="2"/>
+                            <line x1="8" y1="6" x2="16" y2="6"/>
+                            <line x1="8" y1="10" x2="8" y2="10" stroke-width="3"/>
+                            <line x1="12" y1="10" x2="12" y2="10" stroke-width="3"/>
+                            <line x1="16" y1="10" x2="16" y2="10" stroke-width="3"/>
+                            <line x1="8" y1="14" x2="8" y2="14" stroke-width="3"/>
+                            <line x1="12" y1="14" x2="12" y2="14" stroke-width="3"/>
+                            <line x1="16" y1="14" x2="16" y2="14" stroke-width="3"/>
+                            <line x1="8" y1="18" x2="8" y2="18" stroke-width="3"/>
+                            <line x1="12" y1="18" x2="12" y2="18" stroke-width="3"/>
+                            <line x1="16" y1="18" x2="16" y2="18" stroke-width="3"/>
+                        </svg>
+                        </button>
+                    </div>
+                </label>
+            </div>
+
+            <!-- Right column -->
+            <div class="purchase-col">
+                <label>
+                    To
+                    <select name="moneda_to" required>
+                        {% for m in monedas %}
+                        <option value="{{ m }}"
+                            {% if form_data.get('moneda_to') == m %}selected{% endif %}>
+                            {{ m }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </label>
+
+                <label>
+                    Q
+                    <input type="text" value="{{ resultado if resultado is not none else '' }}"
+                           placeholder="—" readonly class="readonly-field">
+                </label>
+
+                <label>
+                    P.U.
+                    <input type="text"
+                           value="{% if resultado is not none and form_data.get('cantidad_from') %}{{ '%.6f'|format(form_data.get('cantidad_from')|float / resultado) }} {{ form_data.get('moneda_from') }}{% else %}—{% endif %}"
+                           readonly class="readonly-field">
+                </label>
+
+                {% if resultado is not none %}
+                <input type="hidden" name="cantidad_to" value="{{ resultado }}">
+                {% endif %}
+
+                <div class="confirm-row">
+                    <button type="submit" name="action" value="aceptar"
+                            {% if resultado is none %}disabled{% endif %}>
+                        &#10003; Confirm
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+{% endblock %}
