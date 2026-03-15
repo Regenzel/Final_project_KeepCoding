@@ -3,6 +3,19 @@
 {% block content %}
 <h2>Buy / Sell / Trade</h2>
 
+<div class="info-box">
+    <span class="info-icon">ℹ</span>
+    <div>
+        Use this form to record a transaction. Here's how:
+        <ul>
+            <li>Select <strong>From</strong> (what you spend) and <strong>To</strong> (what you receive). Your available balance is shown next to each crypto.</li>
+            <li>Enter the amount you want to spend and click <strong>&#x1F5A9;</strong> to fetch the current market price.</li>
+            <li>Review the result and the unit price, then click <strong>Confirm</strong> to save the movement.</li>
+            <li>EUR has unlimited balance — you can always buy crypto with euros.</li>
+        </ul>
+    </div>
+</div>
+
 <div class="form-card">
     <form method="POST" action="{{ url_for('main.purchase') }}">
 

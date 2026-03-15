@@ -3,6 +3,20 @@
 {% block content %}
 <h2>Portfolio Status</h2>
 
+<div class="info-box">
+    <span class="info-icon">ℹ</span>
+    <div>
+        A summary of your investment performance, calculated from all your recorded movements:
+        <ul>
+            <li><strong>Invested</strong> — total EUR you have spent buying crypto.</li>
+            <li><strong>Recovered</strong> — total EUR you have received back from selling crypto.</li>
+            <li><strong>At risk</strong> — EUR still locked in crypto (Invested − Recovered).</li>
+            <li><strong>Current value</strong> — real-time market value of your holdings in EUR.</li>
+            <li><strong>Gain / Loss</strong> — difference between current value and the amount at risk.</li>
+        </ul>
+    </div>
+</div>
+
 {% if error_api %}
 <p class="flash-error">API error: {{ error_api }}</p>
 {% endif %}

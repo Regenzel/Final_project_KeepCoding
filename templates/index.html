@@ -3,6 +3,19 @@
 {% block content %}
 <h2>Movements</h2>
 
+<div class="info-box">
+    <span class="info-icon">ℹ</span>
+    <div>
+        This page shows every transaction you have recorded. Each row is one movement:
+        <ul>
+            <li><strong>BUY</strong> — you spent EUR to buy a cryptocurrency.</li>
+            <li><strong>SELL</strong> — you sold a cryptocurrency and received EUR.</li>
+            <li><strong>TRADE</strong> — you swapped one cryptocurrency for another.</li>
+            <li><strong>P.U.</strong> (unit price) — how much of the source currency you paid per unit of the destination currency.</li>
+        </ul>
+    </div>
+</div>
+
 {% if movimientos %}
 <table>
     <thead>

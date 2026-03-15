@@ -374,6 +374,40 @@ a.nav-logout:hover {
     color: #f85149;
 }
 
+/* ── Info box ── */
+.info-box {
+    display: flex;
+    gap: 0.75rem;
+    background: rgba(88, 166, 255, 0.06);
+    border: 1px solid rgba(88, 166, 255, 0.18);
+    border-radius: 10px;
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--muted-color);
+    line-height: 1.55;
+}
+
+.info-box .info-icon {
+    flex-shrink: 0;
+    font-size: 1rem;
+    color: #58a6ff;
+    margin-top: 0.05rem;
+}
+
+.info-box ul {
+    margin: 0.3rem 0 0;
+    padding-left: 1.1rem;
+}
+
+.info-box li {
+    margin-bottom: 0.2rem;
+}
+
+.info-box strong {
+    color: var(--color);
+}
+
 /* ── Auth pages ── */
 .auth-card {
     max-width: 400px;
