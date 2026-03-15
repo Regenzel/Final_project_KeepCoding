@@ -4,7 +4,7 @@
 <div class="auth-card">
     <h2>Sign in</h2>
 
-    <form method="POST" action="{{ url_for('login') }}">
+    <form method="POST" action="{{ url_for('auth.login') }}">
         <label>
             Username
             <input type="text" name="username" autocomplete="username"
@@ -18,7 +18,7 @@
     </form>
 
     <p class="auth-switch">
-        Don't have an account? <a href="{{ url_for('register') }}">Create one</a>
+        Don't have an account? <a href="{{ url_for('auth.register') }}">Create one</a>
     </p>
 </div>
 {% endblock %}

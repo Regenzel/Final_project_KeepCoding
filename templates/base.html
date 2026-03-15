@@ -17,19 +17,19 @@
             <ul>
                 {% if session.user_id %}
                 <li>
-                    <a href="{{ url_for('index') }}"
+                    <a href="{{ url_for('main.index') }}"
                        {% if active == 'index' %}class="active"{% endif %}>
                         Movements
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url_for('purchase') }}"
+                    <a href="{{ url_for('main.purchase') }}"
                        {% if active == 'purchase' %}class="active"{% endif %}>
                         Buy / Trade
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url_for('status') }}"
+                    <a href="{{ url_for('main.status') }}"
                        {% if active == 'status' %}class="active"{% endif %}>
                         Portfolio
                     </a>
@@ -39,7 +39,7 @@
             {% if session.user_id %}
             <ul>
                 <li><span class="nav-username">{{ session.username }}</span></li>
-                <li><a href="{{ url_for('logout') }}" class="nav-logout">Logout</a></li>
+                <li><a href="{{ url_for('auth.logout') }}" class="nav-logout">Logout</a></li>
             </ul>
             {% endif %}
         </nav>

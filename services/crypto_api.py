@@ -23,8 +23,7 @@ def convert_price(amount, from_symbol, to_symbol):
     response = requests.get(url, headers=HEADERS, params=params)
     response.raise_for_status()
     data = response.json()
-    converted = data["data"][0]["quote"][to_symbol]["price"]
-    return converted
+    return data["data"][0]["quote"][to_symbol]["price"]
 
 
 def get_price_in_eur(symbol, amount=1):
