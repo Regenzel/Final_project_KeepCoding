@@ -55,6 +55,12 @@ Then open `.env` and set your CoinMarketCap API key (get one for free at https:/
 CMC_API_KEY=your_api_key_here
 ```
 
+## Running the tests
+
+```bash
+pytest tests/ -v
+```
+
 ## Running the app
 
 ```bash

@@ -50,7 +50,7 @@
             <td>{{ "%.6f"|format(m.cantidad_from) }}</td>
             <td>{{ m.moneda_to }}</td>
             <td>{{ "%.6f"|format(m.cantidad_to) }}</td>
-            <td class="pu">{{ "%.6f"|format(m.cantidad_from / m.cantidad_to) }} {{ m.moneda_from }}</td>
+            <td class="pu">{% if m.cantidad_to %}{{ "%.6f"|format(m.cantidad_from / m.cantidad_to) }} {{ m.moneda_from }}{% else %}—{% endif %}</td>
         </tr>
         {% endfor %}
     </tbody>

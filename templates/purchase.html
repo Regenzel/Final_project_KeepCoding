@@ -83,7 +83,7 @@
                 <label>
                     P.U.
                     <input type="text"
-                           value="{% if resultado is not none and form_data.get('cantidad_from') %}{{ '%.6f'|format(form_data.get('cantidad_from')|float / resultado) }} {{ form_data.get('moneda_from') }}{% else %}—{% endif %}"
+                           value="{% if resultado is not none and resultado != 0 and form_data.get('cantidad_from') %}{{ '%.6f'|format(form_data.get('cantidad_from')|float / resultado) }} {{ form_data.get('moneda_from') }}{% else %}—{% endif %}"
                            readonly class="readonly-field">
                 </label>
 
