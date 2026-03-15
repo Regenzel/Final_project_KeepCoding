@@ -45,12 +45,14 @@ def purchase():
         except ValueError:
             flash("Please enter a valid amount greater than 0.", "error")
             return render_template("purchase.html", monedas=crypto_api.CURRENCIES,
-                                   active="purchase", form_data=form_data, balances=balances)
+                                   active="purchase", form_data=form_data,
+                                   resultado=None, balances=balances)
 
         if from_currency == to_currency:
             flash("Source and destination currencies must be different.", "error")
             return render_template("purchase.html", monedas=crypto_api.CURRENCIES,
-                                   active="purchase", form_data=form_data, balances=balances)
+                                   active="purchase", form_data=form_data,
+                                   resultado=None, balances=balances)
 
         if from_currency != "EUR":
             balance = movement_model.get_balance(from_currency, uid)
@@ -60,7 +62,8 @@ def purchase():
                     "error"
                 )
                 return render_template("purchase.html", monedas=crypto_api.CURRENCIES,
-                                       active="purchase", form_data=form_data, balances=balances)
+                                       active="purchase", form_data=form_data,
+                                       resultado=None, balances=balances)
 
         if action == "calcular":
             try:
@@ -76,7 +79,8 @@ def purchase():
             except ValueError:
                 flash("You must calculate the value before confirming.", "error")
                 return render_template("purchase.html", monedas=crypto_api.CURRENCIES,
-                                       active="purchase", form_data=form_data, balances=balances)
+                                       active="purchase", form_data=form_data,
+                                       resultado=None, balances=balances)
 
             now = datetime.now()
             movement_model.insert_movement(
