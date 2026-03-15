@@ -43,10 +43,16 @@ pip install -r requirements.txt
 
 **4. Configure the API key**
 
-Open `services/crypto_api.py` and replace the value of `API_KEY` with your own CoinMarketCap key:
+Create a `.env` file in the project root by copying the example:
 
-```python
-API_KEY = "your_api_key_here"
+```bash
+cp .env.example .env
+```
+
+Then open `.env` and set your CoinMarketCap API key (get one for free at https://coinmarketcap.com/api/):
+
+```
+CMC_API_KEY=your_api_key_here
 ```
 
 ## Running the app

@@ -1,11 +1,13 @@
+import os
 import requests
+from dotenv import load_dotenv
 
-API_KEY = "b045b9f024b9499ab046b5394330d4b7"
+load_dotenv()
 
 BASE_URL = "https://pro-api.coinmarketcap.com"
 
 HEADERS = {
-    "X-CMC_PRO_API_KEY": API_KEY,
+    "X-CMC_PRO_API_KEY": os.getenv("CMC_API_KEY", ""),
     "Accept": "application/json",
 }
 
